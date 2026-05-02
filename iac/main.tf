@@ -7,6 +7,12 @@ module "observability" {
   environment    = var.environment
   log_bucket_sse = true
   log_group_name = local.bedrock_log_group
+
+  enable_bedrock_cost_budget          = var.enable_bedrock_cost_budget
+  bedrock_monthly_budget_limit_usd    = var.bedrock_monthly_budget_limit_usd
+  enable_bedrock_budget_slack_chatbot = var.enable_bedrock_budget_slack_chatbot
+  bedrock_budget_slack_team_id        = var.bedrock_budget_slack_team_id
+  bedrock_budget_slack_channel_id     = var.bedrock_budget_slack_channel_id
 }
 
 module "bedrock" {

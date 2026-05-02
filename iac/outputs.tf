@@ -49,6 +49,21 @@ output "cloudwatch_dashboard_name" {
   value       = module.observability.dashboard_name
 }
 
+output "bedrock_budget_sns_topic_arn" {
+  description = "SNS topic for Bedrock budget notifications when enable_bedrock_cost_budget is true."
+  value       = module.observability.bedrock_budget_sns_topic_arn
+}
+
+output "bedrock_budget_id" {
+  description = "Bedrock monthly budget resource id when enable_bedrock_cost_budget is true."
+  value       = module.observability.bedrock_budget_id
+}
+
+output "bedrock_budget_chatbot_configuration_arn" {
+  description = "AWS Chatbot Slack configuration ARN when Slack budget alerts are enabled."
+  value       = module.observability.bedrock_budget_chatbot_configuration_arn
+}
+
 output "litellm_config_bucket_name" {
   description = "S3 bucket for LiteLLM config.yaml when enable_litellm_config_bucket is true."
   value       = try(module.litellm[0].config_bucket_id, null)

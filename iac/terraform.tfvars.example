@@ -14,6 +14,17 @@ team_role_trust_principals = [
 # Guardrail recommended in production.
 enable_guardrail = true
 
+# Optional: cap / alert on monthly Amazon Bedrock spend (Cost Explorer service name "Amazon Bedrock").
+# Creates SNS topic {project}-{env}-bedrock-budget-alerts — add subscriptions for email, Slack, PagerDuty, etc.
+# enable_bedrock_cost_budget       = true
+# bedrock_monthly_budget_limit_usd = "2000"
+#
+# Optional: same SNS topic → Slack via AWS Chatbot (OAuth your Slack workspace in the console once per account:
+# https://docs.aws.amazon.com/chatbot/latest/adminguide/slack-setup.html ). Then set team (T…) and channel (C…) IDs.
+# enable_bedrock_budget_slack_chatbot     = true
+# bedrock_budget_slack_team_id            = "T01234567"
+# bedrock_budget_slack_channel_id         = "C01234567"
+
 # PrivateLink strongly recommended in production.
 # enable_bedrock_private_endpoints = true
 # vpc_id             = "vpc-xxxxxxxx"

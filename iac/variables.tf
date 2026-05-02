@@ -77,6 +77,36 @@ variable "enable_guardrail" {
   default     = false
 }
 
+variable "enable_bedrock_cost_budget" {
+  description = "AWS Budget for monthly Amazon Bedrock spend with SNS alerts (80% actual, 100% forecasted)."
+  type        = bool
+  default     = false
+}
+
+variable "bedrock_monthly_budget_limit_usd" {
+  description = "Monthly Bedrock budget cap in USD (passed to aws_budgets_budget.limit_amount)."
+  type        = string
+  default     = "2000"
+}
+
+variable "enable_bedrock_budget_slack_chatbot" {
+  description = "Send budget alerts from the Bedrock SNS topic to a Slack channel using AWS Chatbot (authorize Slack once per account in the console)."
+  type        = bool
+  default     = false
+}
+
+variable "bedrock_budget_slack_team_id" {
+  description = "Slack workspace ID (T…) from AWS Chatbot after linking the workspace."
+  type        = string
+  default     = ""
+}
+
+variable "bedrock_budget_slack_channel_id" {
+  description = "Slack channel ID (C…) that should receive budget notifications; invite the AWS app to the channel."
+  type        = string
+  default     = ""
+}
+
 variable "model_invoke_resource_arns" {
   description = "Bedrock model and inference-profile ARNs for bedrock:InvokeModel / InvokeModelWithResponseStream. Use arn:aws:bedrock:*:*:inference-profile/... (wildcard account); system inference profile ARNs include your account ID and do not match :: (empty account)."
   type        = list(string)
